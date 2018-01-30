@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import AboutProject from "./_models/about-project.model"
-import { Author } from "./_models/author.model"
-import { SocialLink } from './_models/social-link.model';
-
+import AboutProject from '../_models/about-project.model';
+import { Author } from '../_models/author.model';
+import { SocialLink } from '../_models/social-link.model';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.less']
 })
-export class AppComponent {
+export class AboutComponent {
+
   aboutProject: AboutProject = new AboutProject(
     "Jedi Card API",
     "Angular 5 Project from Jedi Course",
@@ -25,4 +25,5 @@ export class AppComponent {
   getFullName() {
     return this.author.name + " " + this.author.lastname
   }
+
 }

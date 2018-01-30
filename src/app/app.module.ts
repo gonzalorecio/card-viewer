@@ -3,15 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from "@angular/router";
+import { routes } from "./routes";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule
   ],
   providers: [],
