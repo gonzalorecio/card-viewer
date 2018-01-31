@@ -1,0 +1,84 @@
+<link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"
+>
+
+<div class="row main-content">
+  <div class="column">
+    <form action="" 
+      #signInForm="ngForm"
+    >
+    <div class="field">
+      <label class="label" for="">First Name</label>
+      <div class="control">
+        <input class="input"
+          required
+          type="text" 
+          name="name"
+          [(ngModel)]="user.name"
+          #name="ngModel"
+        >
+        <small *ngIf="!name.invalid && name.dirty">
+          Este campo es obligatorio.
+        </small>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="">Last Name</label>
+      <div class="control">
+
+        <input class="input" type="text" 
+        name="last"
+        [(ngModel)]="user.lastname"
+        #lastname="ngModel">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="Email">Email</label>
+      <div class="control">
+        <input class="input" type="text"
+        name="username" 
+        [(ngModel)]="user.email">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="">Password</label>
+      <div class="control">
+        <input class="input"
+        required
+        type="password" 
+        name="password"
+        [(ngModel)]="user.password">
+      </div>
+    </div>
+      
+    <div class="field">
+
+      <label class="label" for="">Repeat Password</label>
+      <input class="input"
+        required
+        type="password"
+        name="password"
+        [(ngModel)]="passwordRepeat"
+        #pwdRepeat="ngModel">
+      <small *ngIf="pwdRepeat.invalid && pwdRepeat.dirty">
+        Este campo es obligatorio.
+      </small>
+      <small *ngIf="pwdRepeat.dirty && !arePasswordsEqual()">
+        Las contraseñas no coinciden.
+      </small>
+    </div>
+    </form>
+    <br>
+    <div class="row">
+      <button class="button" 
+        (click)="onSend()"
+        [class.disabled]="!signInForm.valid && !arePasswordsEqual()"
+      >
+        <span>SignIn</span>
+      </button>
+    </div>
+  </div>
+</div>
