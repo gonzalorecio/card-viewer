@@ -8,6 +8,7 @@
     <h4 class="text-center">Regístrate a la aplicación</h4>
     <form action="" 
       #signInForm="ngForm"
+      (keyup.enter)="!isFormSendable(signInForm.valid) && onSend()"
     >
     <div class="field">
       <label class="label" for="">First Name</label>
@@ -91,9 +92,9 @@
       <br>
         <button class="button" 
           (click)="onSend()"
-          [class.disabled]="!signInForm.valid || !arePasswordsEqual()"
-        >
-          <span>Sign In</span>
+          [class.disabled]="!isFormSendable(signInForm.valid)"
+                  >
+          <span>{{ isLoading? "Loading..." : "Sign In"}}</span>
         </button>
     </form>
     <br>

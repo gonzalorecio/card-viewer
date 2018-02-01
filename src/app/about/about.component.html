@@ -1,15 +1,19 @@
-<div class="row" *ngIf="aboutProject">
-  <div class="column card">
-    <h1>{{ aboutProject?.title }}</h1>
-    <h3>{{ aboutProject?.subtitle }}</h3>
-    <p>{{ aboutProject?.description }}</p>
-    <p>{{ aboutProject?.author }}</p>
+<div class="row about" *ngIf="aboutProject">
+  <div class="">
+    <div class="column">
+      <h1>{{ aboutProject?.title }}</h1>
+      <h3>{{ aboutProject?.subtitle }}</h3>
+      <p>{{ aboutProject?.description }}</p>
+      <p>{{ aboutProject?.author }}</p>
+    </div>
   </div>
-  <div class="column card">
-    <h1>{{ getFullName() }}</h1>
-    <h4>{{ author.bio }}</h4>
-    <div *ngFor="let link of author.socialLinks">
-      <a target="_blank" [href]="link.url">{{link.name}}</a>
+  <div class="">
+    <div class="column">
+      <h1>{{ getFullName() }}</h1>
+      <h4>{{ author.bio }}</h4>
+      <div *ngFor="let link of author.socialLinks">
+        <a target="_blank" [href]="link.url">{{link.name}}</a>
+      </div>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import User from "../_models/user.model";
 import {ApiService} from "../_shared/_services/api.service"
 import { log } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -11,21 +12,33 @@ import { log } from 'util';
 export class SigninComponent {
   user: User = new User();
   passwordRepeat: string = ''
+  isLoading = false
+
   constructor(
-    private _api: ApiService
+    private _api: ApiService,
+    private _router: Router 
   ) { }
 
   onSend(){
+    this.isLoading = true
     //console.log(this.user);
     this._api
         .signin(this.user)
         .then(response => {
           //el server ens respon
           console.log(response)
+          this.isLoading = false
+          this._router.navigateByUrl("/")
         })
         .catch(error => {
           console.log(error)
+          this.isLoading = false
         })
+  }
+
+  isFormSendable(isValid){
+    return isValid || !this.arePasswordsEqual() && !this.isLoading
+
   }
 
   arePasswordsEqual(){

@@ -1,0 +1,26 @@
+<div class="main-container">
+  <h1 class="text-center">Your decks</h1>
+  <a [routerLink]="'/deck/create'" >Create a new deck.</a>
+
+  <div *ngIf="!decks.length && !isLoading">
+    <h2>You have no decks created.</h2>
+  </div>
+
+  <div class="deck card"
+  *ngFor="let d of decks">
+    <div class="deckinfo"> 
+      <h2> {{d.title}} </h2>
+      <p>{{ d.description }}</p>
+    </div>
+  
+    <div class="deckbutton">
+      <button class="delete-deck"
+              (click)="onDeleteDeck(d.id)">
+        <span>Ayy  
+          <i class="fas fa-trash-alt"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+
+</div>

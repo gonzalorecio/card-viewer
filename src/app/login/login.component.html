@@ -10,7 +10,7 @@
       <div class="field">
         <label class="label" for="">Email</label>
         <input type="text" 
-        name="email"
+        name="username"
         placeholder="Email"
         [(ngModel)]="email"
         >
@@ -32,6 +32,11 @@
     <button class="button"
     (click)="onSend()"
       [class.disabled] = "!password || !email"
-      ><span>Log In</span></button>
+      ><span>{{ isLoading? "Loading..." : "Log In"}}</span></button>
+
+    <p>
+      If you don't have an account, you can create one
+      <a [routerLink]="'/signin'"]>here</a>
+    </p>
   </div>
 </div>
