@@ -1,9 +1,11 @@
-<link rel="stylesheet" 
+<!--link rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"
->
+-->
 
-<div class="row main-content">
+<div class="row signin">
   <div class="column">
+    <h1 class= "text-center">♢ JEDI Cards ♢</h1>
+    <h4 class="text-center">Regístrate a la aplicación</h4>
     <form action="" 
       #signInForm="ngForm"
     >
@@ -14,10 +16,11 @@
           required
           type="text" 
           name="name"
+          placeholder="First name"
           [(ngModel)]="user.name"
           #name="ngModel"
         >
-        <small *ngIf="!name.invalid && name.dirty">
+        <small *ngIf="name.invalid && name.dirty">
           Este campo es obligatorio.
         </small>
       </div>
@@ -29,8 +32,12 @@
 
         <input class="input" type="text" 
         name="last"
+        placeholder="Last name"
         [(ngModel)]="user.lastname"
         #lastname="ngModel">
+        <small *ngIf="lastname.invalid && lastname.dirty">
+          Este campo es obligatorio.
+        </small>
       </div>
     </div>
 
@@ -38,8 +45,13 @@
       <label class="label" for="Email">Email</label>
       <div class="control">
         <input class="input" type="text"
-        name="username" 
-        [(ngModel)]="user.email">
+        name="username"
+        placeholder="Email" 
+        [(ngModel)]="user.email"
+        #email="ngModel">
+        <small *ngIf="email.invalid && email.dirty">
+          Este campo es obligatorio.
+        </small>
       </div>
     </div>
 
@@ -49,36 +61,44 @@
         <input class="input"
         required
         type="password" 
+        placeholder="Password"
         name="password"
-        [(ngModel)]="user.password">
+        [(ngModel)]="user.password"
+        #password="ngModel"
+        >
+        <small *ngIf="password.invalid && password.dirty">
+          Este campo es obligatorio y debe tener almenos 6 carácteres.
+        </small>
       </div>
     </div>
       
-    <div class="field">
-
-      <label class="label" for="">Repeat Password</label>
-      <input class="input"
-        required
-        type="password"
-        name="password"
-        [(ngModel)]="passwordRepeat"
-        #pwdRepeat="ngModel">
-      <small *ngIf="pwdRepeat.invalid && pwdRepeat.dirty">
-        Este campo es obligatorio.
-      </small>
-      <small *ngIf="pwdRepeat.dirty && !arePasswordsEqual()">
-        Las contraseñas no coinciden.
-      </small>
-    </div>
+      <div class="field">
+        <label class="label" for="">Repeat Password</label>
+        <input class="input"
+          required
+          type="password"
+          name="password"
+          placeholder="Repeat password"
+          [(ngModel)]="passwordRepeat"
+          #pwdRepeat="ngModel">
+        <small *ngIf="pwdRepeat.invalid && pwdRepeat.dirty">
+          Este campo es obligatorio.
+        </small>
+        <small *ngIf="pwdRepeat.dirty && !arePasswordsEqual()">
+          Las contraseñas no coinciden.
+        </small>
+      </div>
+      <br>
+        <button class="button" 
+          (click)="onSend()"
+          [class.disabled]="!signInForm.valid || !arePasswordsEqual()"
+        >
+          <span>Sign In</span>
+        </button>
     </form>
     <br>
-    <div class="row">
-      <button class="button" 
-        (click)="onSend()"
-        [class.disabled]="!signInForm.valid && !arePasswordsEqual()"
-      >
-        <span>SignIn</span>
-      </button>
-    </div>
+
   </div>
 </div>
+
+

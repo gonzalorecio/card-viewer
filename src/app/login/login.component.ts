@@ -10,15 +10,16 @@ export class LoginComponent {
 
   readonly minLengthPassword = 6
 
-  email: string //= "gonredo@gmail.com"
-  password: string
+  email: string  = "" //= "gonredo@gmail.com"
+  password: string = ""
 
   onSend() {
     console.log(this.email);
   }
 
   onCheckPassword(){
-    console.log(this.password)
+    //console.log(this.password)
+    return this.password.length >= this.minLengthPassword
   }
 
 }
