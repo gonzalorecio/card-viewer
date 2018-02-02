@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Deck } from '../_models/deck.model';
-import { ApiService } from '../_shared/_services/api.service';
+import { ApiService } from '../_shared/services/api.service';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { ViewChild } from '@angular/core';
+import { AppPopupComponent } from '../_shared/components/app-popup/app-popup.component';
 
 @Component({
   selector: 'app-decks',
@@ -16,6 +18,7 @@ export class DecksComponent implements OnInit {
 
   isLoading = true
 
+  private deckToDelete: string
 
   constructor(
     private _api: ApiService,
@@ -24,11 +27,14 @@ export class DecksComponent implements OnInit {
 
   ) { }
 
+  @ViewChild('deletePopup') deletePopup: AppPopupComponent
+
   ngOnInit() {
     this._api
         .getDecks()
-        .then(d => {this.
-          decks = d
+        .then(d => {
+          this.decks = d
+          console.log(d)
           this.isLoading = false
         })
         .catch(error => {
@@ -36,17 +42,23 @@ export class DecksComponent implements OnInit {
         })
   }
 
-  onDeleteDeck(id: string){
-    this._api.deleteDeck(id)
-        .then(() => {
-          const i = this.decks.findIndex(d =>  d.id == id)
-          this.decks.splice(i, 1)
-        })
-    event.stopPropagation()
+  onDeleteDeck(id: string, event: MouseEvent){
+    //this._api.deleteDeck(id)
+      //  .then(() => {
+        //  const i = this.decks.findIndex(d =>  d.id == id)
+        //  this.decks.splice(i, 1)
+       // })
+      this.deletePopup.openPopup()
+      this.deckToDelete = id
+      event.stopPropagation()
 
   }
 
-  onEditDeck(id: string) {
-    this._router.navigateByUrl("/deck/")
+  onAcceptDelete() {
+    this._api.deleteDeck(this.deckToDelete)
+        .then(() => {
+          const i = this.decks.findIndex(d =>  d.id == this.deckToDelete)
+          this.decks.splice(i, 1)
+       })
   }
 }

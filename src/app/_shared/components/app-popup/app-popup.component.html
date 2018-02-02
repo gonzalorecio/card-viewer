@@ -1,0 +1,26 @@
+<div class="popup" *ngIf="isOpen">
+  <h3 class="popup-title">{{ popupTitle }}</h3>
+  <div class="popup-body">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="popup-footer row">
+    <div class="">
+      <button class="button" (click)="closePopup()">
+        Cancel
+        <!--{{ buttonTitles[0] }}-->
+      </button>
+    </div>
+
+    <div class="">
+      <button class="" (click)="onAccept()">
+        Accept
+      <!--{{ buttonTitles[1] }}-->
+    </button>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="popup-backdrop" *ngIf="isOpen"></div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../_shared/_services/api.service';
+import { ApiService } from '../_shared/services/api.service';
 import { Deck } from '../_models/deck.model';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -33,7 +33,10 @@ export class DeckDetailComponent implements OnInit {
 
   onSend() {
     this._api[this.deck.id ? 'putDeck' : 'postDeck'](this.deck)
-      .then(() => this._router.navigateByUrl(this.deckUrl))
+      .then(() => {
+        //afegir alert de success al crear.
+        this._router.navigateByUrl(this.deckUrl)
+      })
   }
 
 }

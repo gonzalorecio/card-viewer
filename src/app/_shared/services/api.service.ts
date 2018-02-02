@@ -4,7 +4,7 @@ import User from '../../_models/user.model';
 import {Deck} from '../../_models/deck.model';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { HttpBackend } from '@angular/common/http/src/backend';
+//import { HttpBackend } from '@angular/common/http/src/backend';
 
 
 @Injectable()
@@ -33,6 +33,15 @@ export class ApiService {
 
   getDecks(): Promise<any> {
     //this.
+    if (!this._auth.isLogged){
+      console.log("getDecks not logged")
+      //this._router.navigateByUrl("/login")
+      return
+    }
+    else{
+      console.log("getDecks logged")
+      //this._router.navigateByUrl("/login")
+    }
     return this._http
                .get(this.apiUrl+'/decks')
                .toPromise()
@@ -69,8 +78,13 @@ export class ApiService {
 
   private handleError(e) {
     if (e.status === 401) { //unauthorised
+      console.log("Unauthorised")
       this._auth.logout()
       this._router.navigateByUrl(this.loginUrl)
+    }
+    else {
+      console.log("My error handler:")
+      console.log(e)
     }
   }
 }

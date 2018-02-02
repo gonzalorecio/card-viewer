@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_shared/_services/auth.service';
+import { AuthService } from '../_shared/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   private readonly loginUrl = "/login"
-  
+
   constructor(
     private _auth: AuthService,
     private _router: Router

@@ -7,25 +7,29 @@ import { RouterModule } from "@angular/router";
 import { CookieService } from "ng2-cookies";
 import { routes } from "./routes";
 import { SigninComponent } from './signin/signin.component';
-import { ApiService } from './_shared/_services/api.service';
-import { AuthService } from './_shared/_services/auth.service';
+import { ApiService } from './_shared/services/api.service';
+import { AuthService } from './_shared/services/auth.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import { AppPopupComponent } from './_shared/components/app-popup/app-popup.component';
+import {SharedModule} from './_shared/shared.module'
+import { AlertService } from './_shared/services/alert.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
+    NavBarComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    SharedModule
   ],
   providers: [
     ApiService,
     AuthService,
-    CookieService
+    CookieService,
+    AlertService
 
   ],
   bootstrap: [AppComponent]

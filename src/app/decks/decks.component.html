@@ -23,7 +23,7 @@
           </span>
         </button>
         <button class="delete-deck"
-        (click)="onDeleteDeck(d.id)">
+        (click)="onDeleteDeck(d.id, $event)">
           <span>  
             <i class="fas fa-trash-alt"></i>
           </span>
@@ -33,7 +33,20 @@
   </div>
  
   <a [routerLink]="'/deck/create'">Create a new deck.</a>
-
+  <app-popup
+    #deletePopup
+    [popupTitle]="'Warning!'"
+    [buttonTiles]="['Cancel','Accept']"
+    (accept) = "onAcceptDelete()"
+  >
+     <p> Do you want to delete de Deck?</p>
+     <button class="button">
+       Cancel
+     </button>
+    <button class="button btn-accept">
+      Accept
+    </button>
+  </app-popup>
 </div>
 
 
