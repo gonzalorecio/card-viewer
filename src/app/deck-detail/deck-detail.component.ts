@@ -22,16 +22,18 @@ export class DeckDetailComponent implements OnInit {
 
   ngOnInit() {
     this._route.params.subscribe(p => {
-      const {id} = p
+      const {id} = p  
+      //console.log(p)
+      if(!id) return
       this._api
           .getDeck(id)
           .then(d => this.deck = d)
     })
   }
 
-  onSend(){
-    this._api.postDeck(this.deck)
-        .then(() => this._router.navigateByUrl(this.deckUrl))
+  onSend() {
+    this._api[this.deck.id ? 'putDeck' : 'postDeck'](this.deck)
+      .then(() => this._router.navigateByUrl(this.deckUrl))
   }
 
 }

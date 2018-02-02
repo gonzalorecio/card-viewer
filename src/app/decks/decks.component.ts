@@ -42,6 +42,11 @@ export class DecksComponent implements OnInit {
           const i = this.decks.findIndex(d =>  d.id == id)
           this.decks.splice(i, 1)
         })
+    event.stopPropagation()
 
+  }
+
+  onEditDeck(id: string) {
+    this._router.navigateByUrl("/deck/")
   }
 }

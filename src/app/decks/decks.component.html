@@ -1,26 +1,41 @@
-<div class="main-container">
+<div class="main-container text-center">
   <h1 class="text-center">Your decks</h1>
-  <a [routerLink]="'/deck/create'" >Create a new deck.</a>
 
   <div *ngIf="!decks.length && !isLoading">
     <h2>You have no decks created.</h2>
   </div>
 
-  <div class="deck card"
+  <div class="card"
   *ngFor="let d of decks">
-    <div class="deckinfo"> 
-      <h2> {{d.title}} </h2>
-      <p>{{ d.description }}</p>
-    </div>
-  
-    <div class="deckbutton">
-      <button class="delete-deck"
-              (click)="onDeleteDeck(d.id)">
-        <span>Ayy  
-          <i class="fas fa-trash-alt"></i>
-        </span>
-      </button>
+    <div class="card-container">
+
+      <div class="deckinfo"> 
+        <h2> {{d.title}} </h2>
+        <p>{{ d.description }}</p>
+      </div>
+      
+      <div class="deckbutton">
+        <button class="edit-deck"
+           [routerLink]= "['/deck', d.id]"
+        >
+          <span>
+            <i class="fas fa-pencil-alt"></i>
+          </span>
+        </button>
+        <button class="delete-deck"
+        (click)="onDeleteDeck(d.id)">
+          <span>  
+            <i class="fas fa-trash-alt"></i>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
+ 
+  <a [routerLink]="'/deck/create'">Create a new deck.</a>
 
 </div>
+
+
+
+

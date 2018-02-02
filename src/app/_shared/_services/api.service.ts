@@ -36,13 +36,9 @@ export class ApiService {
     return this._http
                .get(this.apiUrl+'/decks')
                .toPromise()
-               .catch(e => {
-                 if (e.status === 401) { //unauthorised
-                    this._auth.logout()
-                    this._router.navigateByUrl(this.loginUrl)
-                 } 
-               })
+               .catch(e => this.handleError(e))
   }
+
 
   deleteDeck(id: string): Promise<any> {
     return this._http 
@@ -53,7 +49,7 @@ export class ApiService {
 
   postDeck(deck: Deck): Promise<any>{
     return this._http
-               .post(this.apiUrl+'/deck/create', deck)
+               .post(this.apiUrl+'/decks', deck)
                .toPromise()
                .catch(e => this.handleError(e))
   }
@@ -63,6 +59,12 @@ export class ApiService {
                .get(this.apiUrl+"/decks/"+id)
                .toPromise()
                .catch(e => this.handleError(e))
+  }
+
+  putDeck(deck:Deck): Promise<any> {
+    return this._http.put(this.apiUrl + '/decks/' + deck.id, deck)
+      .toPromise()
+      .catch(e => this.handleError(e))
   }
 
   private handleError(e) {

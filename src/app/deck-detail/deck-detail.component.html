@@ -1,16 +1,26 @@
-<div>
+<div class="main-container">
   <h1 class="text-center">Create new deck</h1>
   <form>
     <div class="field">
 
       <label for="title">Name</label>
-      <input type="">
+      <input type="text" name="title" [(ngModel)] = "deck.title">
     </div>
 
     <div class="field">
       <label for="">Description </label>
-      <input type="">
+      <input type="text" name="description" [(ngModel)]="deck.description">
     </div>
   </form>
+  <br>  
+  <div class="text-center">
+    <button class="button" 
+      [class.disabled]="!deck.title"
+      (click)="onSend()">
+      <span>
+        Save
+      </span>
+    </button>
+  </div>
 
 </div>
