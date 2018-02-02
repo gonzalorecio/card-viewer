@@ -9,11 +9,13 @@ import { routes } from "./routes";
 import { SigninComponent } from './signin/signin.component';
 import { ApiService } from './_shared/_services/api.service';
 import { AuthService } from './_shared/_services/auth.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
