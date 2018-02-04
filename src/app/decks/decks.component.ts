@@ -53,6 +53,9 @@ export class DecksComponent implements OnInit {
       event.stopPropagation()
 
   }
+  onEdit(){
+    event.stopPropagation()
+  }
 
   onAcceptDelete() {
     this._api.deleteDeck(this.deckToDelete)

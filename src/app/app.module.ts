@@ -13,6 +13,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AppPopupComponent } from './_shared/components/app-popup/app-popup.component';
 import {SharedModule} from './_shared/shared.module'
 import { AlertService } from './_shared/services/alert.service';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
   declarations: [

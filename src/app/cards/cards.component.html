@@ -1,0 +1,25 @@
+
+<div class="card-div">
+  <h1 class="text-center" *ngIf="!cards && !isLoading">You have no cards in this deck.</h1>
+  <div class= card *ngFor="let c of cards">
+    <div class="card-info">
+      <h1>{{c.value}}</h1>
+      <h1 *ngIf="c.suit.length===1">{{c.suit}}</h1>
+      <h4 *ngIf="c.suit.length>1">{{c.suit}}</h4>
+    </div>
+    <div class="card-image">
+      <img src="{{c.image}}" alt="">
+    </div>
+  </div>
+
+  <h3 class="text-center" *ngIf="isLoading">Loading Cards...</h3>
+  <div class="loader text-center" *ngIf="isLoading"></div>
+
+  <div class="text-center">
+    <a class="text-center" *ngIf="!isLoading"
+    >
+      Create a new card.
+    </a>
+  </div>
+
+</div>

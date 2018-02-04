@@ -109,12 +109,20 @@ button {
     box-shadow: 0 4px 8px 4px rgba(0,0,0,0.2);
     transition: 0.22s;
     border-radius: 5px;
-    padding: 25px;
-    padding-left: 35px;
-    padding-right: 35px;
+    
     margin: 2em;
-    height: 140px;
+    //height: 140px;
     background: #FFFFFF;
+
+    
+    
+    left: 0;
+    right: 0;
+    //margin: auto;
+    //top: 10em;
+    
+    //background-color: rgb(255, 255, 255);
+    padding: 2em 2em;
     
 }
 
@@ -126,6 +134,11 @@ button {
 /* Add some padding inside the card container */
 .card-container {
     padding: 2px 15px;
+    
+    display: flex;
+    
+    //justify-content: center; /* align horizontal */
+    //align-items: center; /* align vertical */
 }
 
 .delete-deck {
@@ -149,15 +162,24 @@ button {
 
 .deckinfo{
     text-align: left;
-    float: left;
+    //float: left;
     width: 66%; 
+    display: inline-block;
 }
 .deckbutton {
     text-align: right;
-    float: left;
-    width: 34%;
-    margin-top: 25px;
-    //padding: auto;
+    //float: right;
+    width: 33%;
+    margin-top: auto;
+
+    display: inline-block;    
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.deck {
+    //max-width: 500px;
+    
 }
 
 

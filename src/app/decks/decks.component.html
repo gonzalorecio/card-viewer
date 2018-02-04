@@ -5,18 +5,21 @@
     <h2>You have no decks created.</h2>
   </div>
 
-  <div class="card"
+  <div class="card deck"
   *ngFor="let d of decks">
     <div class="card-container">
 
       <div class="deckinfo"> 
-        <h2> {{d.title}} </h2>
+        <a href=""  [routerLink]="['/cards', d.id]">
+          <h2> {{d.title}} </h2>
+        </a>
         <p>{{ d.description }}</p>
       </div>
       
       <div class="deckbutton">
         <button class="edit-deck"
            [routerLink]= "['/deck', d.id]"
+           (click)="onEdit()"
         >
           <span>
             <i class="fas fa-pencil-alt"></i>
@@ -31,6 +34,9 @@
       </div>
     </div>
   </div>
+
+  <h3 class="text-center" *ngIf="isLoading">Loading Decks...</h3>
+  <div class="loader text-center"  *ngIf="isLoading"></div>
  
   <a [routerLink]="'/deck/create'">Create a new deck.</a>
   <app-popup
@@ -40,12 +46,12 @@
     (accept) = "onAcceptDelete()"
   >
      <p> Do you want to delete de Deck?</p>
-     <button class="button">
+     <!--button class="button">
        Cancel
      </button>
     <button class="button btn-accept">
       Accept
-    </button>
+    </button-->
   </app-popup>
 </div>
 
