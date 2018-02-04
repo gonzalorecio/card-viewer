@@ -12,7 +12,8 @@ export class AuthService {
   ) { }
 
   isLogged(): boolean{
-    console.log("Logged status: " + this._cookies.check(this.cookieToken))
+    //console.log("Logged status: " + this._cookies.check(this.cookieToken))
+    let token = this._cookies.get(this.cookieToken)
     return this._cookies.check(this.cookieToken)
   }
 

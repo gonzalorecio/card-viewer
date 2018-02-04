@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   private readonly loginUrl = "/login"
+  private username = ""
 
   constructor(
     private _auth: AuthService,
@@ -17,11 +18,12 @@ export class NavBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
   }
 
   onLogout(){
     this._auth.logout()
-    console.log(this._auth.isLogged)
+    //console.log(this._auth.isLogged)
     this._router.navigateByUrl(this.loginUrl)
   }
 
