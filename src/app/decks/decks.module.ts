@@ -11,7 +11,8 @@ import { SharedModule } from '../_shared/shared.module';
   imports: [
     RouterModule.forChild([
       {path: "", component: DecksComponent},
-      //{ path: ":id", loadChildren: './cards/cards.module#CardsModule'},
+      //{ path: "/cards/:id", loadChildren: './cards/cards.module#CardsModule'},
+      
     ]),
     FormsModule,
     CommonModule,

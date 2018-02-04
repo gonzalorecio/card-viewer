@@ -8,7 +8,7 @@ import { SharedModule } from '../_shared/shared.module';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: ":id", component: CardsComponent },
+      { path: "", component: CardsComponent },
     ]),
     CommonModule,
     SharedModule

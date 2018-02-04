@@ -14,6 +14,7 @@ import { AppPopupComponent } from './_shared/components/app-popup/app-popup.comp
 import {SharedModule} from './_shared/shared.module'
 import { AlertService } from './_shared/services/alert.service';
 import { CardsComponent } from './cards/cards.component';
+import { CardDetailComponent } from './card-detail/card-detail.component';
 
 @NgModule({
   declarations: [

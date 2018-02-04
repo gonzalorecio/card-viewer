@@ -1,0 +1,31 @@
+<div class="main-container">
+  <h1 class="text-center">Create new card</h1>
+  <form>
+    <div class="field">
+
+      <label for="value">Value</label>
+      <input #value="ngModel" type="text" name="value" [(ngModel)]="card.value">
+      <small *ngIf="value.dirty&&!card.value">This field is required</small>
+    </div>
+
+    <div class="field">
+      <label for="">Suit </label>
+      <input #suit="ngModel" type="text" name="suit" [(ngModel)]="card.suit">
+      <small *ngIf="suit.dirty&&!card.suit">This field is required</small>
+    </div>
+
+    <div class="field">
+      <label for="">Image </label>
+      <input type="text" name="image" placeholder="URL" [(ngModel)]="card.image">
+    </div>
+  </form>
+  <br>
+  <div class="text-center">
+    <button class="button" [class.disabled]="!card.value||!card.suit" (click)="onSend()">
+      <span>
+        Save
+      </span>
+    </button>
+  </div>
+
+</div>

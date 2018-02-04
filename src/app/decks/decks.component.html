@@ -10,7 +10,7 @@
     <div class="card-container">
 
       <div class="deckinfo"> 
-        <a href=""  [routerLink]="['/cards', d.id]">
+        <a href=""  [routerLink]="['/decks',d.id, 'cards']">
           <h2> {{d.title}} </h2>
         </a>
         <p>{{ d.description }}</p>
@@ -45,7 +45,7 @@
     [buttonTiles]="['Cancel','Accept']"
     (accept) = "onAcceptDelete()"
   >
-     <p> Do you want to delete de Deck?</p>
+     <p> Do you want to delete the Deck?</p>
      <!--button class="button">
        Cancel
      </button>
